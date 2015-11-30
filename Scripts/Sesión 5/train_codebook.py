@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from scipy.cluster.vq import kmeans, vq
+from scipy.cluster.vq import kmeans
 from sklearn import preprocessing
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 #from get_local_features import get_local_features
 
 def train_codebook(des):

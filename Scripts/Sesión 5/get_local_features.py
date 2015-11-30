@@ -18,7 +18,7 @@ def get_local_features(params, img):
     kp, des=sift.detectAndCompute(res,None,100)
     
     #Devolvemos los descriptores para una imagen
-    return kp,des
+    return des
 
   
 
