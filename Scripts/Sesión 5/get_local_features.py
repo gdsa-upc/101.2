@@ -20,13 +20,3 @@ def get_local_features(params, img):
     #Devolvemos los descriptores para una imagen
     return des
 
-  
-
-
-   
-    
-   
-    
-    
-    
-    
