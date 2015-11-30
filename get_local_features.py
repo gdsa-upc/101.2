@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import os
 import cv2
 import numpy as np
 import params 
@@ -19,7 +18,7 @@ def get_local_features(params, img):
     kp, des=sift.detectAndCompute(res,None,100)
     
     #Devolvemos los descriptores para una imagen
-    return des
+    return kp,des
 
   
 
