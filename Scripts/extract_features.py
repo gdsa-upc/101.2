@@ -9,6 +9,8 @@ from params import get_params
 import os
 import cv2
 import time
+import warnings
+warnings.filterwarnings("ignore")
 
 def extract_features(params):
 

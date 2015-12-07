@@ -3,7 +3,6 @@ from scipy.cluster.vq import kmeans
 from sklearn.preprocessing import normalize
 from params import get_params
 
-
 def train_codebook(params,des):
     
     # Normalizamos los descriptores
