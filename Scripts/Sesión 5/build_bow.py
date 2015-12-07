@@ -1,20 +1,15 @@
 import numpy as np
-from sklearn import preprocessing
+from sklearn.preprocessing import normalize
 
 
 def build_bow(assignment,codebook):
 
-    Bow_vector=dict()
+    tamany_bw = np.shape(codebook[0])
+    bow = np.zeros(tamany_bw)
     
     for index in assignment:
-        temp = dict()
+        bow[index] += 1
     
-        for one in assignment[index]:
-            two =one+1
-            temp[one] = temp[two]
-    
-        for second in temp:
-            temp[second] = preprocessing.normalize(second, 'l2', 1, True)
-            Bow_vector[index]=temp
-    
-    return Bow_vector
+    bow = normalize(bow)
+        
+    return bow

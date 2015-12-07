@@ -1,11 +1,11 @@
 
 from scipy.cluster.vq import vq
-import sklearn 
+from sklearn.preprocessing import normalize
 
-def get_assignments(des,codebook):
+def get_assignments(codebook,des):
     
     # Normalizamos los descriptores
-    descriptors = sklearn.preprocessing.normalize(des, 'l2', 1, True)
+    descriptors = normalize(des, 'l2', 1, True)
     
     # Calculamos las asignaciones para cada descriptor
     [assig,distance] = vq(descriptors,codebook)
