@@ -72,7 +72,10 @@
 
 <p><H3><strong><font color="black">Extracción de características con Bag of Words</font></strong></H3></p>
 <p>Para hacer esto primero generamos un descriptor para cada imagen de entrenamiento y de validación. Utilizamos la técnica de Bag of Words, que consiste en la formación de un codebook de palabras visuales y la construcción de un descriptor de imagen, codificando el número de veces que cada palabra en el codebook aparece en la imagen.</p>
-
+<p><H3><strong><font color="black">Ranking</font></strong></H3></p>
+<p>Una vez extraído y almacenado los BoW descriptors, calculamos las distancias de cada descriptor de imagen en el conjunto de validación para todos los descriptores de imagen en el conjunto de entrenamiento. Una vez que tenemos estas distancias, podemos utilizarlas para clasificar las imágenes en el conjunto de entrenamiento de menor a mayor.</p>
+<p><H4><strong><font color="black">Evaluación del Ranking</font></strong></H4></p>
+<p>Mean Average Precision 0.216421167095</p>
 
 <BR>
 <p><H1><strong>Clasificador de imágenes</strong></H1></p>
