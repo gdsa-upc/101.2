@@ -1,15 +1,30 @@
+# -*- coding: utf-8 -*-
 import os
+from params import get_params
+    
+def build_database(params):
 
-#create a file where all imagenames with the ID are saved
-file = open('C:\Users\Albert\Documents\UNI\Q-5\GDSA\Projecte\Valoration.txt','w')
+    # List images
+    image_names = os.listdir(os.path.join(params['root'],params['database'],params['split'],'images'))
+
+    # File to be saved
+    file = open(os.path.join(params['root'],params['root_save'],params['image_lists'],params['split'] + '.txt'),'w')
+
+    # Save image list to disk
+    for imname in image_names:
+        file.write(imname + "\n")
+    file.close()
 
 
-#read filenames from the directory
-filename= os.listdir(r'C:\Users\Albert\Documents\UNI\Q-5\GDSA\Projecte\TerrassaBuildings900\val\images')
- 
- # write the Index and the filename line by line in the textfile
-for index in range(len(filename)):
- file.write('{:d}  {}\n'.format(index, filename[index]))
- 
+if __name__=="__main__":
 
-file.close()
+    params = get_params()
+    
+    # Build image list for validation set
+    build_database(params)
+    
+    # Switch to training set
+    params['split'] = 'train'
+    
+    # Build image list for training set
+    build_database(params)
