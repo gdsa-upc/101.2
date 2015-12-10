@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import pandas as pd
 import numpy as np
@@ -64,7 +65,7 @@ def display(params,query_id,ranking,relnotrel):
         ax.axes.get_xaxis().set_visible(False)
         ax.axes.get_yaxis().set_visible(False)
     
-    print "Displaying..."
+    print "Mostrando imágenes..."
     plt.show()
 
 def read_annotation(params):
