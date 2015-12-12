@@ -29,7 +29,7 @@ def get_params():
     # Parameters
     params['split'] = 'val'
     params['descriptor_size'] = 512 # Number of clusters
-    params['descriptor_type'] = 'SIFT'
+    params['descriptor_type'] = 'ROOTSIFT'
     params['keypoint_type'] = 'SIFT'
     params['max_size'] = 300 # Widht size
     params['distance_type'] = 'euclidean'
