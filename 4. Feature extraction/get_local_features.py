@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 import cv2
+from rootsift import RootSIFT
+from params import get_params
 #from ressize import resize_image
 
 def get_local_features(params, image):
- 
-    #Leemos una imagen
-    #image = cv2.imread(img)
+
+    # detect Difference of Gaussian keypoints in the image
+    detector = cv2.FeatureDetector_create(params['keypoint_type'])
+    kps = detector.detect(image)
     
-    #Hacemos más pequeña la imagen
-    #image = resize_image(params,image)
-    
-    # Iniciamos el detector SIFT
-    sift = cv2.SIFT()
-    
-    #Guardamos los puntos de interés y sus respectivos descriptores
-    kp, des=sift.detectAndCompute(image,None)
+    # extract RootSIFT descriptors
+    rs = RootSIFT()
+    (kps, descs) = rs.compute(image, kps)
+
     
     #Devolvemos los descriptores para una imagen
-    return des
-    
+    return descs
+
+
     

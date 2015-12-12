@@ -1,5 +1,5 @@
 
-from scipy.cluster.vq import vq
+from sklearn.cluster import MiniBatchKMeans
 from sklearn.preprocessing import normalize
 
 def get_assignments(codebook,des):
@@ -8,7 +8,8 @@ def get_assignments(codebook,des):
     descriptors = normalize(des, 'l2', 1, True)
     
     # Calculamos las asignaciones para cada descriptor
-    [assig,distance] = vq(descriptors,codebook)
+    assignments = codebook.predict(descriptors)
+    #[assig,distance] = vq(descriptors,codebook)
     
-    return assig
+    return assignments
 
