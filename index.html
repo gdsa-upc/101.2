@@ -77,8 +77,11 @@
 <p><H1><strong>Buscador Visual</strong></H1></p>
 <p>La idea de este apartado es que el programa debe comparar la imagen de referencia con toda la base de datos y, después, debe dar una secuencia de imágenes, cuyas tengan la máxima simlitud a la imagen de referencia.</p>
 <p>Para hacer una búsqueda visual a través de una imagen que cogemos como referencia, el programa empieza buscando los puntos de interés de dicha imagen y sus respectivos descriptores.</p> 
+<p>En este proceso hay cuatro fases/funciones, tal y como está explicado en el notebook de la sesión 5, que son los siguientes:</p>
+<p>- Get Local Features - Train Codebook - Get Assignments - Build Bow</p>
+<p>Una vez hecho estas cuatro fases, hay una función principal que reune todas las funciones anteriores llamada Extract Features, que a partir de esta obtenemos los resultados mostrados más adelante.</p>
 <p><strong>Puntos de interés</strong></p>
-<p>Para obtener los puntos de interés de una imagen hemos utilizado el descriptor 'SIFT'. A continuación podemos ver una foto del ayuntamiento de Terrassa después de obtener diferentes puntos de interés.</p>
+<p>Para obtener los puntos de interés de una imagen hemos utilizado el descriptor 'ROOTSIFT'. A continuación podemos ver una foto del ayuntamiento de Terrassa después de obtener diferentes puntos de interés.</p>
 <p><center><img src="http://s30.postimg.org/w9s294aqp/prueba.jpg" alt=""></center></p>
 
 <BR>
@@ -127,7 +130,9 @@
 
 <BR>
 <p><H1><strong>Clasificador de imágenes</strong></H1></p>
-<p>La idea de este apartado consiste que dada una imagen de referencia, la clasifique en la base de datos y, una vez hecho esto, debe decir a qué clase pertenece esta imagen mediante una descripción. Por ejemplo, suponemos que la imagen de referencia es el ayuntamiento de Terrassa: Lo que hace el programa es clasificar esta imagen en la base de datos, y después muestra que la imagen pertenece al ayuntamiento de Terrassa.</p>
+<p>Este apartado está dividido en dos fases/funciones, que son el Train Classfier y el Classify.</p>
+<p>Para poder entrenar el clasificador utilizamos el diccionario de entrenamiento creado a partir de la función Extract Features hecha con anterioridad, y la lista de anotación. Una vez entrenado el clasificador, lo cargamos en la funcón classifier, junto al diccionario del conjunto de validación (para obtener sus BoW) y la anotación (dónde se podrá comparar las clases reales). Creamos una lista de identificadores y otra con los BoW (Bag of Words). Hacemos la predicción de los BoW del conjunto de validación respecto al modelo de entrenamiento.</p>
+<p>Una vez hecho estas dos funciones utilizamos un evaluador para poder obtener estos resultados:</p>
 
 
 
