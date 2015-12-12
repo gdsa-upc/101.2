@@ -109,12 +109,12 @@
    <img src="http://s23.postimg.org/pj4yobwxn/2909_7870_19136.jpg" alt=""></p>
 
 <BR>
-<p><H3><strong><font color="black">Extracción de características con Bag of Words</font></strong></H3></p>
+<p><H2><strong><font color="black">Extracción de características con Bag of Words</font></strong></H2></p>
 <p>Para hacer esto, primero generamos un descriptor para cada imagen de entrenamiento y de validación. Utilizamos la técnica de Bag of Words, que consiste en la formación de un codebook de palabras visuales y la construcción de un descriptor de imagen, codificando el número de veces que cada palabra en el codebook aparece en la imagen.</p>
 <p><H3><strong><font color="black">Ranking</font></strong></H3></p>
 <p>Una vez extraído y almacenado los BoW descriptors, calculamos las distancias de cada descriptor de imagen en el conjunto de validación para todos los descriptores de imagen en el conjunto de entrenamiento. Una vez que tenemos estas distancias, podemos utilizarlas para clasificar las imágenes en el conjunto de entrenamiento de menor a mayor.</p>
-<p><H4><strong><font color="black">Evaluación del Ranking</font></strong></H4></p>
-<p>Mean Average Precision 0.232524096239</p>
+<p><H3><strong><font color="black">Evaluación del Ranking</font></strong></H3></p>
+<p><strong>Mean Average Precision 0.232524096239</strong></p>
 <p>- Mean Average Precision de cada una de las imágenes:</p>
 <p><strong>· mercat_independecia 0.175824029141</strong> &nbsp; &nbsp; <strong>· societat_general 0.219728859098</strong></p>
 <p><strong>· farmacia_albinyana 0.378031308894</strong> &nbsp; &nbsp; &nbsp; &nbsp; <strong>· ajuntament 0.694933192667</strong></p>
