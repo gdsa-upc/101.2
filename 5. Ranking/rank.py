@@ -3,6 +3,8 @@ import pickle
 import numpy as np
 from params import get_params
 from sklearn.metrics.pairwise import pairwise_distances
+from kaggle_scripts import save_ranking_file
+import pandas as pd
 
 def rank(params):
     
@@ -14,6 +16,9 @@ def rank(params):
     train_features = pickle.load(open(os.path.join(params['root'],params['root_save'],params['feats_dir'],
                              'train' + "_" + str(params['descriptor_size']) + "_"
                              + params['descriptor_type'] + "_" + params['keypoint_type'] + '.p'),'rb'))
+    
+    annotation_val = pd.read_csv(os.path.join(params['root'],params['database'],params['split'],'annotation.txt'), sep='\t', header = 0)
+    out = open(os.path.join(params['root'],params['root_save'],params['rankings_dir'],params['descriptor_type'],params['split'], 'rank.csv'),'w')
     
     
     # For each image id in the validation set
@@ -42,6 +47,17 @@ def rank(params):
             outfile.write(item.split('.')[0] + '\n')
         
         outfile.close()
+    
+    out.write("Query,RetrievedDocuments\n")
+    for val_id in os.listdir(os.path.join(params['root'],params['root_save'],params['rankings_dir'],params['descriptor_type'],params['split'])):
+        
+        query_class = list(annotation_val.loc[annotation_val['ImageID'] == val_id.split('.')[0]]['ClassID'])[0]     
+        rank = pd.read_csv(os.path.join(params['root'],params['root_save'],params['rankings_dir'],params['descriptor_type'],params['split'],val_id.split('.')[0] + '.txt'),header= None)
+        
+        if not query_class == "desconegut":
+            
+            save_ranking_file(out,val_id,rank)
+        
 
 if __name__ == "__main__":
     

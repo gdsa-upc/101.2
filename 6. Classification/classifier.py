@@ -3,6 +3,7 @@ import os
 import pickle
 from params import get_params
 import numpy as np
+from kaggle_scripts import save_classification_file
 
 def classifier(params):
     
@@ -17,7 +18,7 @@ def classifier(params):
     
     # Fichero de salida.
     outfile = open(os.path.join(params['root'],params['root_save'],params['classification_dir'],
-                    params['descriptor_type'],params['split'] + '_classification.txt'),'w')
+                    params['descriptor_type'],params['split'] + '_kaggle_classification.txt'),'w')
     
     ids = [] # Lista de identificadores.
     val_feats = [] # Lista de features de validación.
@@ -33,6 +34,8 @@ def classifier(params):
 
 
     # En este for incluyo los ids en una columna y las clases en otra, segun el predict.
+    
+    '''
     i = 0           
     for label in prediction_labels:
         
@@ -40,6 +43,9 @@ def classifier(params):
         i = i + 1
         
     outfile.close()
+    '''
+    
+    save_classification_file(outfile,ids,prediction_labels)
     
     
     
