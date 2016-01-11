@@ -46,8 +46,20 @@ def extract_features(params):
 if __name__ == "__main__":
 
     params = get_params()
+    
+    params['split'] = 'train'
+    
+    print "Storing bow features for train set..."
+    t = time.time()
+    extract_features(params)
+    print "Done. Time elapsed:", time.time() - t
 
-    params['descriptor_size'] = 512
+    params['split'] = 'val'
+    
+    print "Storing bow features for validation set..."
+    t = time.time()
+    extract_features(params)
+    print "Done. Time elapsed:", time.time() - t
     
     params['split'] = 'test'
     
